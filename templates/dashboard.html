@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Dashboard</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"></li>
+    </ol>
+
+    <div>
+        <h1>Welcome {{User.username}}</h1>
+    </div>
+    <div>
+        <div class="card">
+            <div class="card-header">
+                Events
+            </div>
+            {% for event in User.events %}
+            <div class="card-body">
+                <h5 class="card-title">{{event}}</h5>
+                <p class="card-text">Click start to attempt MCQ test.</p>
+                <a href="/test/{{event}}" class="btn btn-primary">Start</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

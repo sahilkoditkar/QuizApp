@@ -1,0 +1,19 @@
+[
+    {
+        "question": "c language",
+        "options": [
+            "object",
+            "data",
+            "top-down",
+            "bottom-up"
+        ]
+    },
+    {
+        "question": "question2",
+        "options": [
+            "option 1",
+            "option 2",
+            "option 3"
+        ]
+    }
+]

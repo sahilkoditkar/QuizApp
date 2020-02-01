@@ -1,0 +1,18 @@
+[
+    {
+        "username": "sahil",
+        "password": "sahil",
+        "events": [
+            "ClashofCoders",
+            "Webber"
+        ]
+    },
+    {
+        "username": "gaurav",
+        "password": "pandit",
+        "events": [
+            "ClashofCoders",
+            "Googler"
+        ]
+    }
+]

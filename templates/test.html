@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">{{Event}}</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+        <li class="breadcrumb-item active">{{Event}}</li>
+    </ol>
+
+    <div class="jumbotron">
+        <form action='/submit/{{Event}}' method='POST'>
+            <ol>
+                {% for mcq in MCQs %}
+                <li>{{mcq['question']}}</li>
+                {% for j in mcq['options'] %}
+                <input type='radio' value='{{j}}' name="{{mcq['question']}}" />{{j}}
+                {% endfor %}
+                {% endfor %}
+            </ol>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="alert"></div>
+    </div>
+</div>
+
+{% endblock %}

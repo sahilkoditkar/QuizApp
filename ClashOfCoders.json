@@ -11,9 +11,8 @@
     {
         "question": "question2",
         "options": [
-            "option 1",
-            "option 2",
-            "option 3"
+            "True",
+            "False"
         ]
     }
 ]

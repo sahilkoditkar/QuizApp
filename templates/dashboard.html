@@ -23,7 +23,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{event}}</h5>
                 <p class="card-text">Click start to attempt MCQ test.</p>
-                <a href="/test/{{event}}" class="btn btn-primary">Start</a>
+                <button class="btn btn-primary" onclick="window.open('/test/{{event}}','{{event}}','width=900,height=400,screenX=25,screenY=25,resizable=yes,scrollbars=yes'); return false">Start</button>
             </div>
             {% endfor %}
         </div>

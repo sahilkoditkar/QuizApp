@@ -18,7 +18,7 @@ def authenticate():
     username = request.form['username']
     password = request.form['password']
 
-    with open('users.json') as file:
+    with open('Users.json') as file:
         users = json.load(file)
     for user in users:
         if username == user['username'] and password == user['password']:
@@ -33,7 +33,7 @@ def logout():
 
 @app.route('/dashboard')
 def dashboard():
-    with open('users.json') as file:
+    with open('Users.json') as file:
         users = json.load(file)
     for user in users:
         if session['username'] == user['username']:
@@ -54,10 +54,22 @@ def submitTest(event):
     correct = 0
     with open('{}.json'.format(event)) as file:
         mcqs = json.load(file)
+
     for mcq in mcqs:
-        if mcq['options'][0] == request.form[mcq['question']]:
-            correct+=1
-    return '<h1>Correct Answers: <u>'+str(correct)+'</u></h1>'
+        if mcq['question'] in request.form:
+            if mcq['options'][0] == request.form[mcq['question']]:
+                correct+=1
+
+    with open('{}Result.json'.format(event)) as file:
+        score = json.load(file)
+    score.append({
+        'name':session['username'],
+        'score':correct
+    })
+    with open('{}Result.json'.format(event), 'w') as outfile:
+        json.dump(score, outfile, indent=4)
+
+    return '<div style="margin:15%;"> <h1>Correct Answers: <u>'+str(correct)+'</u></h1> <button onclick="window.close()">Close</button> </div>'
 
 if __name__ == '__main__':
 	app.run(debug=True)

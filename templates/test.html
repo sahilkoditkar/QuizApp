@@ -4,27 +4,63 @@
 
 <div class="container">
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">{{Event}}</h1>
+    <div class="row">
+        <h1 class="mt-4 mb-3">{{Event}}</h1>
+    </div>
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
         <li class="breadcrumb-item active">{{Event}}</li>
+        <div class="ml-auto">
+            <b>Time Left: <span id="minutes"></span>:<span id="seconds"></span></b>
+        </div>
     </ol>
 
-    <div class="jumbotron">
-        <form action='/submit/{{Event}}' method='POST'>
+    <div class="jumbotron" onload="examTimer">
+        <form id="test" action='/submit/{{Event}}' method='POST'>
             <ol>
                 {% for mcq in MCQs %}
-                <li>{{mcq['question']}}</li>
-                {% for j in mcq['options'] %}
-                <input type='radio' value='{{j}}' name="{{mcq['question']}}" />{{j}}
-                {% endfor %}
+                <li>
+                    <label for="{{mcq['question']}}">{{mcq['question']}}</label>
+                    {% for opt in mcq['options'] %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="{{mcq['question']}}" id="{{opt}}"
+                            value="{{opt}}">
+                        <label class="form-check-label" for="{{opt}}"> {{opt}} </label>
+                    </div>
+                    {% endfor %}
+                </li>
                 {% endfor %}
             </ol>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row m-3 p-3">
+                <button type="button" class="btn btn-success" onclick="previous">Previous</button>
+                <button type="button" class="btn btn-success" onclick="next">Next</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
         <div class="alert"></div>
     </div>
 </div>
+
+<script>
+    window.onload = countdown;
+    //set minutes, seconds
+    var mins = 2;
+    var secs = mins * 60;
+    function countdown() {
+        mins = document.getElementById("minutes").innerText = Math.floor(secs / 60); //getminutes();
+        document.getElementById("seconds").innerText = secs - Math.round(mins * 60); //getseconds();
+        if (mins < 1) {
+            minutes.style.color = "red";
+            seconds.style.color = "red";
+        }
+        if (secs == 0) {
+            alert("Time's up");
+            document.getElementById('test').submit();
+        }
+        secs--;
+        setTimeout('countdown()', 1000);
+    }
+</script>
 
 {% endblock %}

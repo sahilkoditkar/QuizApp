@@ -1,0 +1,30 @@
+[
+    {
+        "username": "sahil",
+        "password": "sahil",
+        "events": [
+            "ClashOfCoders",
+            "Webber"
+        ]
+    },
+    {
+        "username": "gaurav",
+        "password": "pandit",
+        "mobile": "9876543210",
+        "androidID": "1542798635",
+        "events": [
+            "ClashOfCoders",
+            "Googler"
+        ]
+    },
+    {
+        "username": "shubham",
+        "password": "jadhav",
+        "mobile": "9876543210",
+        "androidID": "1542798635",
+        "events": [
+            "ClashOfCoders",
+            "Googler"
+        ]
+    }
+]
